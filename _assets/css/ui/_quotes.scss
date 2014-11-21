@@ -1,0 +1,49 @@
+.quote {
+	text-indent: 0;
+	padding-left: $base-spacing-unit;
+	padding-right: $base-spacing-unit;
+	margin-bottom: $base-spacing-unit;
+	border-left: 8px solid rgba($blog-color, 0.5);
+	.post__body & {
+		max-width: 640px;
+		margin: $base-spacing-unit * 2 auto;
+		font-size: $h3-size;
+		font-style: italic;
+		color: $gray-medium;
+	}
+	&.float--left,
+	&.float--right {
+		width: 100%;
+		@include media-query(lap-and-up) {
+			margin: 0;
+			margin-bottom: $base-spacing-unit;
+			width: 33.33%;
+		}		
+	}
+	&.float--left {
+	//	margin-right: $base-spacing-unit;
+	}
+	&.float--right {
+	//	margin-left: $base-spacing-unit;
+	}
+	p {
+		&:before,
+		&:after {
+			content: "";
+		}
+	}
+}
+.quote__cite,
+.timePosted {
+	display: block;
+	margin-top: $half-spacing-unit;
+	text-align: right;
+	text-transform: uppercase;
+	font-style: normal;
+	color: $gray-light;
+	@include font-size($h6-size);
+}
+.quote--tweet {
+	border-left-color: $twitter-color;
+	@include font-size($h4-size);
+}

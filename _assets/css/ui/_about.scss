@@ -1,0 +1,139 @@
+.page--about {
+	.page-main {
+		background-color: darken($about-color, 10%);
+		color: white;
+		h2 {
+			text-align: center;
+			font-size: 48px;
+		}
+		a:not(.btn) {
+			color: rgba(white, 0.75);
+			border-bottom-color: rgba(white, 0.15);
+			&:hover,
+			&:focus {
+				color: white;
+				border-bottom-color: rgba(white, 0.5);
+			}
+		}
+	}
+	.hero {
+		> .container {
+			background-color: rgba(darken($about-color, 20%), 0.85);
+		}		
+	}
+	.block-list {
+		border-color: darken($about-color, 15%);
+		li {
+			border-color: inherit;
+		}
+	}
+	.progress__bar {
+
+	}
+}
+
+.about-steps {
+	margin-left: 0;
+	margin-bottom: 0;
+	list-style: none;
+	text-align: center;
+//	border-bottom: 2px solid darken($about-color, 15%);
+	h3 {
+		font-size: $h1-size;
+	}
+	.grid__item {
+		font-size: 18px;
+	}
+	.strip {
+		position: relative;
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			margin-left: -24px;
+			z-index: 10;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 24px 24px 0 24px;
+			border-color: darken($about-color, 10%) transparent transparent transparent;
+		}
+		&:first-child {
+			&:before {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 0;
+				left: 50%;
+				margin-left: -24px;
+				z-index: 10;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 24px 24px 0 24px;
+				border-color: darken($about-color, 10%) transparent transparent transparent;
+			}
+		}
+		&:nth-child(odd) {
+			&:after {
+				border-top-color: $about-color;
+			}
+			img {
+				margin-bottom: $base-spacing-unit * 2;
+				@include media-query(desk) {
+					margin-bottom: 0;
+				}
+			}
+		}
+		&:nth-child(even) {
+			img {
+				margin-top: $base-spacing-unit * 2;
+				@include media-query(desk) {
+					margin-top: 0;
+				}
+			}
+		}
+		&:last-child {
+			&:after {
+				display: none;
+			}
+		}
+		img {
+			margin-left: auto;
+			margin-right: auto;
+			max-width: 300px;
+		}
+	}
+	.strip :last-child {
+		margin-bottom: 0;
+	}
+}
+
+.hire-me {
+box-shadow: inset 0 12px 20px rgba(black, 0.15),
+            	inset 0 6px 12px rgba(black, 0.25);
+//	text-align: center;
+	padding-top: $base-spacing-unit;
+	padding-bottom: $base-spacing-unit;
+	color: $gray-darker;
+	background-color: lighten($clouds, 5%);
+	> .container h2 {
+		@include font-size(72px);
+	}
+}
+
+
+.tools {
+	> li {
+		width: 33.33%;
+		float: left;
+		padding: $base-spacing-unit;
+	}
+	img {
+		display: block;
+		margin-bottom: $base-spacing-unit;
+	}
+}
+

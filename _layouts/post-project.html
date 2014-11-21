@@ -1,0 +1,177 @@
+---
+layout: page-post
+---
+
+<article class="post post--single post--project">
+	<header class="post__head">
+		<div class="post__img" style="background-image:url({{ site.url }}/images/projects/{{ page.img-dir }}/{{ page.post-gallery | first | map: 'url' }})">
+			<a class="popup" rel="group" title="{{ page.post-gallery | first | map: 'title' }}" href="{{ site.url }}/images/projects/{{ page.img-dir }}/large/{{ page.post-gallery | first | map: 'url' }}">
+				<img src="{{ site.url }}/images/projects/{{ page.img-dir }}/large/{{ page.post-gallery | first | map: 'url' }}" alt="">
+			</a>
+			<div class="project__fade"></div>
+		</div>
+		<h1 class="post__title">
+			<div class="container">
+				{{ page.title }}
+			</div>
+		</h1>
+	</header>
+	<footer class="post__details">
+		<ul>
+			<li>
+					{% if page.category contains 'web-development' %}
+
+						<span>URL:</span>
+
+						<a href="{{ page.client-url }}">
+							{{ page.client-url | remove: 'http://'' }}
+						</a>
+
+					{% else %}
+
+						<span>Client:</span>
+
+						{% if page.client-url %}
+							<a href="{{ page.client-url }}">
+								{{ page.client }}
+							</a>
+						{% else %}
+							{{ page.client }}
+						{% endif %}
+
+					{% endif %}
+			</li>
+			<li>
+				<span>Type:</span> 
+
+				{% for category in page.categories %}
+					{% unless category == 'projects' %}
+						{{ category | replace: '-', ' ' | capitalize }}
+					{% endunless %}
+				{% endfor %}
+			</li>
+			<li>
+				<span>Tools:</span>
+
+				{{ page.tags | join: ', ' }}
+			</li>
+
+		</ul>
+	</footer>
+	<div class="container">
+		<div class="post__body">
+			{% if page.intro %}
+				<p class="post__intro">{{ page.intro }}</p>
+			{% endif %}
+
+			{% if page.post-gallery.size > 1 %}
+
+				<div class="grid">
+					<div class="grid__item desk--two-thirds">
+						
+						{{ content }}
+					
+					</div>
+
+					<div class="grid__item desk--one-third">
+						<aside class="img-grid img-grid--third">
+							<h2 class="img-grid__title">Gallery</h2>
+							<ul>
+
+								{% for image in page.post-gallery | offset: 1 %}
+
+									<li class="flyout">
+										<a class="popup" rel="group" href="{{ site.url }}/images/projects/{{ page.img-dir }}/large/{{ image | map: 'url' }}" title="{{ image | map: 'title' }}">
+											<img src="{{ site.url }}/images/projects/{{ page.img-dir }}/small/{{ image | map: 'url' }}" alt="">
+										</a>
+										<span class="flyout__content tooltip">
+											{{ image | map: 'title' }}
+										</span>
+									</li>
+
+								{% endfor %}
+
+							</ul>
+						</aside>
+					</div>
+				</div>
+
+			{% else %}
+
+				{{ content }}
+
+			{% endif %}
+
+		</div>
+	</div>
+
+	<div class="post__share">
+		<ul>
+			<li>
+				<span id="facebook-count" class="share__number">0</span>
+				<a href="http://www.facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" class="brand--facebook">
+					<svg viewBox="0 0 14 32" class="icon icon--facebook">
+						<use xlink:href="#icon-facebook"></use>
+					</svg>
+				</a>
+			</li>
+			<li>
+				<span id="twitter-count" class="share__number">0</span>
+				<a href="https://twitter.com/share?url={{ site.url }}{{ page.url }}&text={{ page.title }}&via=ThatKeithDude" class="brand--twitter">
+					<svg viewBox="0 0 30 32" class="icon icon--twitter">
+						<use xlink:href="#icon-twitter"></use>
+					</svg>
+				</a>
+			</li>
+			<li>
+				<span id="pinterest-count" class="share__number">0</span>
+				<a href="https://pinterest.com/pin/create/bookmarklet/?media={{ site.url }}{{ site.url }}/images/projects/{{ page.img-dir }}/large/{{ page.post-gallery | first | map: 'url' }}&url={{ site.url }}{{ page.url }}&description={{ page.title }}" class="brand--pinterest">
+					<svg viewBox="0 0 20 20" class="icon icon--pinterest">
+						<use xlink:href="#icon-pinterest"></use>
+					</svg>
+				</a>
+			</li>
+		</ul>
+	</div>
+</article>
+
+<script>
+	var countUp, setCount, url;
+
+	url = "{{ site.url }}{{ page.url }}";
+
+	$.getJSON("http://urls.api.twitter.com/1/urls/count.json?url=" + url + "&callback=?", function(json) {
+	return setCount($("#twitter-count"), json.count);
+	});
+
+	$.getJSON("http://graph.facebook.com/" + url, function(json) {
+	return setCount($("#facebook-count"), json.shares);
+	});
+
+	$.getJSON("http://api.pinterest.com/v1/urls/count.json?url=" + url + "&callback=?", function(json) {
+	return setCount($("#pinterest-count"), json.count);
+	});
+
+	countUp = function($item) {
+	  return setTimeout(function() {
+	    var current, newCount, target;
+	    current = $item.attr("data-current-count") * 1;
+	    target = $item.attr("data-target-count") * 1;
+	    newCount = current + Math.ceil((target - current) / 2);
+	    $item.attr("data-current-count", newCount);
+	    $item.html(newCount);
+	    if (newCount < target) {
+	      return countUp($item);
+	    }
+	  }, 100);
+	};
+
+	setCount = function($item, count) {
+	  if (count == null) {
+	    count = null;
+	  }
+	  $item.attr("data-target-count", count);
+	  $item.attr("data-current-count", 0);
+	  return countUp($item);
+	};
+</script>

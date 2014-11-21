@@ -1,0 +1,68 @@
+<footer class="page-foot">
+	<div class="container">
+		<div class="grid">
+			<div class="grid__item lap--one-half desk--one-third">
+				<section class="page-foot__section">
+					<header class="section-head page-foot__head">
+						<h2>
+							<svg class="icon icon--search">
+								<use xlink:href="#icon-search"></use>
+							</svg>
+							Search
+						</h2>
+					</header>
+					<div class="submit-wrap">
+						<input id="search-input" type="text" class="text-input" placeholder="Enter your terms here">
+						<button class="btn btn--search">Search</button>
+					</div>
+				</section><!-- /page-foot__section -->
+			</div><!-- /grid__item lap--one-third desk--one-third -->
+			<div class="results-wrap grid__item lap--one-half desk--two-thirds">
+				<div id="search-results" class="results">
+					<h3>
+						<svg class="icon icon--search icon--small icon--red">
+							<use xlink:href="#icon-search"></use>
+						</svg>
+						Here&rsquo;s what I found:
+					</h3>
+
+					<div class="search-results-scroll">
+						<ul id="search-results-list" class="results__list">
+						</ul>
+					</div>
+				</div>
+
+				<section class="page-foot__section page-foot__twitter">
+					<header class="section-head page-foot__head">
+						<h2 class="float--left">
+							<svg class="icon icon--twitter brand-fill--twitter">
+								<use xlink:href="#icon-twitter"></use>
+							</svg>
+							Tweets
+						</h2>
+						<a class="btn btn--secondary float--right" href="http://twitter.com/thatkeithdude">@thatkeithdude</a>
+					</header>
+					<div id="tweets">
+						<div class="spinner">
+						  <div class="bounce1"></div>
+						  <div class="bounce2"></div>
+						  <div class="bounce3"></div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+	<div class="page-foot__copyright">
+		<div class="container">
+			<div class="grid">
+				<div class="grid__item lap--one-half desk--one-half">
+					This site was built with <a href="http://inuitcss.com/">inuitcss</a> and <a href="http://jekyllrb.com/">Jekyll</a>.
+				</div>
+				<div class="grid__item lap--one-half desk--one-half">
+					&copy; 2011-2014 Keith Pickering. <a href="#">Some rights reserved.</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

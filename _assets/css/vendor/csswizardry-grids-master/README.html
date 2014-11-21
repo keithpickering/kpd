@@ -1,0 +1,228 @@
+<h1 id="csswizardry-grids">csswizardry-grids</h1>
+<p><strong>Simple, fluid, nestable, flexible, Sass-based, responsive grid system.</strong></p>
+<ul>
+<li>Fully responsive</li>
+<li>Mobile first</li>
+<li>Infinitely nestable</li>
+<li>Reversible/reorderable</li>
+<li>With/without gutters</li>
+<li>Endless possible combinations</li>
+<li>Simple to understand, human-friendly classes</li>
+<li>Option to keep classes out of your HTML</li>
+<li>Robust</li>
+<li>Simple</li>
+<li>No <code>.clear</code> or <code>.last</code> classes</li>
+<li>It just <em>works</em></li>
+</ul>
+<p>Please see <a href="http://csswizardry.com/2013/02/responsive-grid-systems-a-solution/">Responsive grid systems; a solution?</a>
+for a comprehensive overview of the principles of the grid system.</p>
+<h2 id="demo">Demo</h2>
+<ul>
+<li><a href="http://csswizardry.github.com/csswizardry-grids">csswizardry.github.com/csswizardry-grids</a>.</li>
+<li><a href="http://csswizardry.com/2013/02/introducing-csswizardry-grids/">Writeup</a></li>
+</ul>
+<h2 id="setup">Setup</h2>
+<p>Simply fill in/adjust the relevant variables.</p>
+<ul>
+<li><code>$responsive</code> is used to turn csswizardry-grids’ responsive features on and
+off. csswizardry-grids is designed primarily for responsive builds but can
+also be used on non-responsive projects just as easily. Setting this to false
+will simply prevent Sass generating your <code>palm</code> etc modifiers.</li>
+<li><code>$gutter</code> controls how much space there is between columns.</li>
+<li><code>$mobile-first</code> controls whether you would like unclassed grid items to
+<em>initially</em> adopt `width:100%;. This means that you won’t need to add a class
+to force a grid item to take up the full width of its container.</li>
+<li><code>$use-silent-classes</code> tells csswizardry-grids whether to go ahead and compile
+solid, traditional classes (e.g. <code>.one-whole</code>) or to create Sass ‘silent’
+classes which only compile to CSS once explictly called.</li>
+<li><code>$lap-start</code> and <code>$desk-start</code> tell csswizardry-grids when to fire particular
+media queries to service those particular sizes. Note that csswizardry-grids
+works out the ends of any other breakpoints by using these numbers.</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>csswizardry-grids is incredibly simple to implement, its classes are all
+human-readable and follow the same pattern.</p>
+<h3 id="patterns">Patterns</h3>
+<p>csswizardry-grids’ classes are based on <a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">a modified BEM
+syntax</a>.</p>
+<ul>
+<li><code>.grid</code> is a <strong>B</strong>lock</li>
+<li><code>.grid__item</code> is an <strong>E</strong>lement</li>
+<li><code>.grid--rev</code> is a <strong>M</strong>odifier</li>
+</ul>
+<p>Classes include your breakpoint namespaces (e.g. <code>.palm--one-half</code>,
+<code>.desk--two-thirds</code> and so on); your push and pull classes (<code>.push--one-third</code>,
+<code>.pull--desk--one-quarter</code> and so on); your regular classes (<code>.one-tenth</code>,
+<code>.three-quarters</code> etc).</p>
+<p>Knowing these patterns will allow you to create hundreds of different
+combinations. A few examples:</p>
+<pre><code>/**
+ * Sets an item to be one half across all breakpoints.
+ */
+.one-half{}
+
+/**
+ * Pushes an item one third of the way to the right across all breakpoints.
+ */
+.push--one-third{}
+
+/**
+ * Sets an item to be ten twelfths wide only at the desk breakpoint.
+ */
+.desk--ten-twelthfs{}
+
+/**
+ * Pulls an item one half of the way to the left only at the palm breakpoint.
+ */
+.pull--palm--one-half{}</code></pre>
+<h3 id="classes-in-markup">Classes in markup</h3>
+<p>If you are using traditional classes then an example, basic usage might look
+like this:</p>
+<pre><code>&lt;div class=&quot;grid&quot;&gt;
+
+    &lt;div class=&quot;grid__item  lap--one-half  desk--two-thirds&quot;&gt;
+        ...
+    &lt;/div&gt;&lt;!--
+
+ --&gt;&lt;div class=&quot;grid__item  lap--one-half  desk--one-third&quot;&gt;
+        ...
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+<p>It’s as simple as that!</p>
+<hr>
+<p><strong>Note the empty HTML comments.</strong> These are to remove whitespace caused by using
+<code>inline-block</code>.  Prior to v1.1 this was tackled by using some
+<a href="https://github.com/csswizardry/csswizardry-grids/blob/60a5075ac65282bb24fa5a5d5ed32a060ce2975f/csswizardry-grids.scss#L64-L65"><code>[letter|word]-spacing</code> trickery</a>,
+however Chrome 25 introduced a change which meant this method now broke
+csswizardry-grids.</p>
+<p>If you’d rather not use HTML comments to remove the whitespace then you can set
+the <code>$use-markup-fix</code> variable to false; this invokes a CSS hack that <em>cannot</em>
+be guaranteed. Always take care to check things over if using this method.</p>
+<p>If you need to use csswizardry-grids with a CMS, or data coming out of a loop,
+you will need to format your template something a little like this:
+<a href="http://codepad.viper-7.com/MdpMjx">codepad.viper-7.com/MdpMjx</a></p>
+<hr>
+<h3 id="sass-silent-classes">Sass’ silent classes</h3>
+<p>If you are using silent classes (<code>$use-silent-classes: true;</code>) then your HTML
+might look like this:</p>
+<pre><code>&lt;div class=&quot;page&quot;&gt;
+
+    &lt;div class=&quot;content&quot;&gt;
+        ...
+    &lt;/div&gt;&lt;!--
+
+ --&gt;&lt;div class=&quot;sub-content&quot;&gt;
+        ...
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+<p>…and your Sass, something like this:</p>
+<pre><code>.page{
+    @extend %grid;
+}
+
+    .content,
+    .sub-content{
+        @extend %grid__item;
+        @extend %one-whole;
+        @extend %lap--one-half;
+    }
+
+    .content{
+        @extend %desk--two-thirds;
+    }
+
+    .sub-content{
+        @extend %desk--one-third;
+    }</code></pre>
+<h3 id="reversed-grids-grid-rev-">Reversed grids (<code>.grid--rev{}</code>)</h3>
+<p>csswizardry-grids has the option to reverse a set of grids; this means that the
+order you write your source and the order it renders are total opposites, for
+example:</p>
+<pre><code>&lt;div class=&quot;grid  grid--rev&quot;&gt;
+
+    &lt;div class=&quot;main-content  grid__item  two-thirds&quot;&gt;
+        I appear first in the markup, but render second in the page.
+    &lt;/div&gt;&lt;!--
+
+ --&gt;&lt;div class=&quot;sub-content  grid__item  one-third&quot;&gt;
+        I appear second in the markup, but render first in the page.
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+<p>This is handy if you want to lay out your page a certain way visually but it
+would be advantageous to order the source differently, for example to aid
+accessibility (getting a screenreader to read more important content first).</p>
+<h3 id="gutterless-grids-grid-full-">Gutterless grids (<code>.grid--full{}</code>)</h3>
+<p>It may be desirable at times to have no gutter between your grid items; with
+csswizardry-grids this is as simple as:</p>
+<pre><code>&lt;div class=&quot;grid  grid--full&quot;&gt;
+
+    &lt;div class=&quot;grid__item  one-half&quot;&gt;
+        Look, ma! No gutter!
+    &lt;/div&gt;&lt;!--
+
+ --&gt;&lt;div class=&quot;grid__item  one-half&quot;&gt;
+        Look, ma! No gutter!
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+<h3 id="right-aligned-grids-grid-right-">Right-aligned grids (<code>.grid--right{}</code>)</h3>
+<p>Keep grids in their correct order, but have them flush right instead of left:</p>
+<pre><code>&lt;div class=&quot;grid  grid--right&quot;&gt;
+
+    &lt;div class=&quot;grid__item  one-quarter&quot;&gt;
+        I render first but start in the middle of the page.
+    &lt;/div&gt;&lt;!--
+
+ --&gt;&lt;div class=&quot;grid__item  one-quarter&quot;&gt;
+        I render second and appear at the very right edge of the page.
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+<h3 id="centred-grids-grid-center-">Centred grids (<code>.grid--center{}</code>)</h3>
+<p>You can centrally align your grids by simply using the <code>.grid--center</code> modifier:</p>
+<pre><code>&lt;div class=&quot;grid  grid--center&quot;&gt;
+
+    &lt;div class=&quot;grid__item  one-half&quot;&gt;
+        I’m in the middle!
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+<h3 id="vertically-aligned-grids-grid-middle-bottom-">Vertically aligned grids (<code>.grid--[middle|bottom]{}</code>)</h3>
+<p>You can vertically align your grids to each other by simply using the
+<code>.grid--[middle|bottom]</code> modifiers:</p>
+<pre><code>&lt;div class=&quot;grid  grid--middle&quot;&gt;
+
+    &lt;div class=&quot;grid__item  one-half&quot;&gt;
+        I’m in the middle!
+    &lt;/div&gt;
+
+    &lt;div class=&quot;grid__item  one-half&quot;&gt;
+        I’m in the middle!
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+<h3 id="different-sized-grids-grid-narrow-wide-">Different sized grids (<code>.grid--[narrow|wide]{}</code>)</h3>
+<p>You can quickly alter the gutter size of your grids to half (<code>.grid--narrow</code>) or
+double (<code>.grid--wide</code>) by using the relevant modifiers.</p>
+<pre><code>&lt;div class=&quot;grid  grid--narrow&quot;&gt;
+
+    &lt;div class=&quot;grid__item  one-half&quot;&gt;
+        I’m a narrow-guttered grid.
+    &lt;/div&gt;
+
+    &lt;div class=&quot;grid__item  one-half&quot;&gt;
+        I’m a narrow-guttered grid.
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>
+<h2 id="help-and-questions">Help and questions</h2>
+<p>If you have any trouble setting csswizardry-grids up, or would like some help
+using and implementing it (or any questions about how it works) then please feel
+free to <a href="https://twitter.com/csswizardry">fire me a tweet</a> or
+<a href="https://github.com/csswizardry/csswizardry-grids/issues/new">open an issue</a>.</p>
+<p>csswizardry-grids’ Sass can look a little daunting, but it’s doing quite a lot
+of work behind the scenes to make it as simple as possible when it comes to
+implementation.</p>

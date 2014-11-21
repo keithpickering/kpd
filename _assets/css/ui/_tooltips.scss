@@ -1,0 +1,57 @@
+
+.flyout {
+	overflow: visible;
+}
+.tooltip {
+	@extend %shadow-1;
+	left: auto;
+	z-index: -1;
+	opacity: 0;
+	margin-top: 8px;
+	white-space: nowrap;
+	transform: translate(-50%, 0)
+			   scale(0.75);
+	transform-origin: top center;
+	padding: $half-spacing-unit $base-spacing-unit;
+	border-radius: 100px;
+	color: white;
+	background-color: darken($wet-asphalt, 15%);
+	text-align: center;
+	@include font-size($base-font-size);
+	&:before {
+		content: "";
+		position: absolute;
+		bottom: 100%;
+		left: 50%;
+		transform: translate(-50%, 0);
+		border-style: solid;
+		border-width: 0 12px 16px 12px;
+		border-color: transparent transparent darken($wet-asphalt, 15%) transparent;
+	}
+}
+.flyout:hover > .tooltip {
+	left: 50%;
+	z-index: 1000;
+	opacity: 1;
+	transition: opacity 0.25s,
+				transform 0.1s ease-out;
+	transition-delay: 0.25s;
+	transform: translate(-50%, 0)
+			   scale(1);
+}
+
+.flyout__content {
+	.flyout--top & {
+		bottom: 105%;
+		top: auto;
+	}
+}
+.tooltip {
+	.flyout--top & {
+		&:before {
+			top: 100%;
+			border-width: 16px 12px 0 12px;
+			border-color: #19232d transparent transparent transparent;
+		}
+	}
+}

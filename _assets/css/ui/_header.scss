@@ -1,0 +1,155 @@
+/*------------------------------------*\
+    HEADER.SCSS
+\*------------------------------------*/
+/**
+ * Styles for the main page header 
+ */
+
+
+
+
+
+.page-head {
+	position: relative;
+	color: white;
+	// Make nav links appear to overflow their container
+	&:before,
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 50%;
+		background-color: $module-color-dark;
+		z-index: -1;
+	}
+	&:before {
+		left: 0;
+		box-shadow: inset 0 -8px 0 $home-color;
+	}
+	&:after {
+		right: 0;
+		box-shadow: inset 0 -8px 0 $about-color;
+	}
+}
+
+.page-head__top {
+	padding-top: $base-spacing-unit;
+	padding-bottom: $base-spacing-unit;
+	z-index: 2;
+	background-color: $module-color;
+	text-align: center;
+	@include media-query(lap-and-up) {
+		text-align: left;
+	}
+}
+
+
+/**
+ * Logo
+ */
+.site-logo {
+	display: inline-block;
+	vertical-align: top;
+	height: 48px;
+	width: auto;
+	max-width: none;
+	margin-bottom: $base-spacing-unit;
+	@include media-query(lap-and-up) {
+		margin-bottom: 0;
+	}
+}
+
+
+/**
+ * Social links
+ */
+.social-links {
+	line-height: 1;
+	font-size: 0;
+	margin-bottom: 0;
+	white-space: nowrap;
+	> li {
+		margin-right: $half-spacing-unit;
+		width: 48px;
+		height: 48px;
+		transition: all 0.25s;
+		&:last-child {
+			margin-right: 0;
+		}
+		&:hover {
+			background-color: white;
+		}
+		> a {
+			display: block;
+			overflow: hidden;
+			text-align: center;
+			height: 48px;
+			line-height: 48px;
+		}
+		> .tooltip {
+			@include font-size($base-font-size);
+		}
+	}
+	.icon {
+		vertical-align: middle;
+	}
+	.brand--email:hover .icon {
+		fill: $main-accent-color;
+	}
+	.brand--facebook:hover .icon {
+		fill: $facebook-color;
+	}
+	.brand--twitter:hover .icon {
+		fill: $twitter-color;
+	}
+	.brand--tumblr:hover .icon {
+		fill: $tumblr-color;
+	}
+	.brand--linkedin:hover .icon {
+		fill: $linkedin-color;
+	}
+	@include media-query(lap-and-up) {
+		text-align: right;
+	}
+}
+
+
+/**
+ * Main navigation
+ */
+.main-nav {
+	@extend %cf;
+	width: 100%;
+	a {
+		position: relative;
+		float: left;
+		width: 50%;
+		padding: $base-spacing-unit;
+		white-space: nowrap;
+		color: white;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+		transition: box-shadow 0.25s linear,
+					background-color 0.25s linear;
+		z-index: 1;
+		@include font-size($h4-size);
+		@include media-query(lap-and-up) {
+			width: 25%;
+			padding-bottom: $base-spacing-unit + 8px;
+			background-color: $module-color-dark;
+			&:hover,
+			&:focus {
+				background-color: transparent;
+			}
+		}
+	}
+}
+.main-nav__home      { @include main-nav-link($home-color); }
+.main-nav__projects { @include main-nav-link($projects-color); }
+.main-nav__blog      { @include main-nav-link($blog-color); }
+.main-nav__about     { @include main-nav-link($about-color); }
+
+

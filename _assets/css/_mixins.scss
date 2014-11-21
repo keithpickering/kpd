@@ -1,0 +1,184 @@
+/*------------------------------------*\
+    MIXINS
+\*------------------------------------*/
+
+
+
+
+
+/**
+ * Mixin for declaring font faces
+ *
+ * Source: http://pivotallabs.com/bulletproof-font-face-syntax-with-sass/
+ */
+@mixin declare-font-face($font-family, $font-filename, $font-weight : normal, $font-style :normal, $font-stretch : normal) {
+	@font-face {
+		font-family: "#{$font-family}";
+		src: url("../fonts/#{$font-filename}/#{$font-filename}.eot");
+		src: url("../fonts/#{$font-filename}/#{$font-filename}.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/#{$font-filename}/#{$font-filename}.woff") format("woff"),
+		url("../fonts/#{$font-filename}/#{$font-filename}.ttf") format("truetype"),
+		url("../fonts/#{$font-filename}/#{$font-filename}.svg##{$font-family}") format("svg");
+		font-weight: $font-weight;
+		font-style: $font-style;
+		font-stretch: $font-stretch;
+	}
+}
+
+
+/**
+ * Mixin for main nav links
+ */
+@mixin main-nav-link($nav-color) {
+	background-color: $nav-color;
+  &:hover,
+  &:focus {
+    background-color: lighten($nav-color, 10%);;
+  }
+	@include media-query(lap-and-up) {
+  	box-shadow: inset 0 -8px 0 $nav-color;
+  	&:hover,
+  	&:focus {
+  		box-shadow: inset 0 -100px 0 $nav-color;
+  	}
+  }
+}
+
+
+/**
+ * Mixin for button colors
+ */
+@mixin button-style($button-color) {
+	box-shadow: inset 0 0 0 2px lighten($button-color, 20%);
+  background-color: $button-color;
+	&:hover,
+	&:focus {
+    color: $button-color;
+		box-shadow: inset 0 0 0 4px $button-color, inset 0 0 0 8px lighten($button-color, 20%);
+  	&.btn--natural {
+      box-shadow: inset 0 0 0 4px $button-color;
+    }
+  }
+}
+
+
+/**
+ * Mixin for long shadows
+ *
+ * Source: http://codepen.io/awesomephant/pen/mAxHz
+ */
+@mixin long-shadow($type, $color, $length, $fadeout: true, $skew: false, $direction: right){
+  $shadow: '';
+  @if $skew == false or $type == text{
+    @if $direction == right {
+      @for $i from 0 to $length - 1 {
+        $shadow: $shadow + $i + 'px ' + $i + 'px 0 ' + $color + ',';
+      }
+    }
+    @if $direction == left {
+      @for $i from 0 to $length - 1 {
+        $shadow: $shadow + $i * -1 + 'px ' + $i + 'px 0 ' + $color + ',';
+       }
+      }
+     }
+        
+   @if $fadeout == true{
+    @for $i from 1 to $length - 1 {
+      @if $type == text or $skew == false{
+        @if $direction == right{
+          $shadow: $shadow + $i + 'px ' + $i + 'px 0 ' +       rgba($color, 1 - $i / $length) + ',';
+        }
+        @if $direction == left{
+          $shadow: $shadow + $i * -1 + 'px ' + $i + 'px 0 ' +       rgba($color, 1 - $i / $length) + ',';
+        }
+      }
+      @if ($type == box) and $skew == true{
+        @if $direction == right {
+          $shadow: $shadow + $i + 'px ' + $i + 'px 0 ' + $i * .2 + 'px ' + rgba($color, 1 - $i / $length) + ',';
+        }
+        @if $direction == left {
+          $shadow: $shadow + $i * -1 + 'px ' + $i + 'px 0 ' + $i * .2 + 'px ' + rgba($color, 1 - $i / $length) + ',';
+        }
+      }
+  }
+  $shadow: $shadow + $length + 'px ' + $length + 'px 0 ' + rgba($color, 0);
+ }
+ @if $fadeout == false{
+   @if $skew == true and ( $type == box ){
+     @for $i from 0 to $length - 1 {
+            $shadow: $shadow + $i + 'px ' + $i + 'px 0 ' + $i * .1 + 'px ' + $color + ',';
+      }
+   }
+    $shadow: $shadow + $length + 'px ' + $length + 'px 0 ' + rgba(0,0,0,0);
+ }
+ $shadow: unquote($shadow);
+  @if $type == 'box' {box-shadow: $shadow;}
+  @if $type == 'text' {text-shadow: $shadow;}
+}
+
+
+/**
+ * Mixin for chevron shapes
+ */
+@mixin chevron($chevron-direction:up, $chevron-size:24px, $chevron-color:white) {
+  height: $chevron-size;
+  width: $chevron-size;
+  border-style: solid;
+  border-top-width: $chevron-size * 0.25;
+  border-right-width: $chevron-size * 0.25;
+  border-left-width: 0;
+  border-bottom-width: 0;
+  color: $chevron-color;
+
+  @if $chevron-direction == "up"  {
+    transform: translate(($chevron-size * 0.15), ($chevron-size * 0.15)) rotate(-45deg);
+  }
+  @if $chevron-direction == "down"  {
+    transform: translate(($chevron-size * 0.15), 0) rotate(135deg);
+  }
+  @if $chevron-direction == "left"  {
+    transform: translate(($chevron-size * 0.25), ($chevron-size * 0.15)) rotate(-135deg);
+  }
+  @if $chevron-direction == "right"  {
+    transform: translate(0, ($chevron-size * 0.15)) rotate(45deg);
+  }
+}
+
+
+/**
+ * Mixin for input placeholder styling
+ */
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}  
+}
+
+
+//
+// Flexbox
+//
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex:  $values;
+  -webkit-flex:  $values;
+  -ms-flex:  $values;
+  flex:  $values;
+}
+
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;  
+  -moz-box-ordinal-group: $val;     
+  -ms-flex-order: $val;     
+  -webkit-order: $val;  
+  order: $val;
+}

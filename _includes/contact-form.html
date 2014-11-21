@@ -1,0 +1,31 @@
+<form id="contact" class="contact" method="post" action="/mail.php">
+	<h2>
+		<span class="alpha">Say hello!</span>
+		<span class="contact__subtitle gamma muted">(Or something else)</span>
+	</h2>
+
+	<label for="contact-name" class="accessibility">Name</label>
+	<input id="contact-name" name="contact-name" type="text" class="text-input contact__name" placeholder="Name">
+
+	<label for="contact-email" class="accessibility">Email</label>
+	<input id="contact-email" name="contact-email" type="email" class="text-input contact__email" placeholder="Email">
+
+	<label for="contact-message" class="accessibility">Message</label>
+	<textarea id="contact-message" name="contact-message" class="contact__message text-input" placeholder="Enter your message here."></textarea>
+
+	<button type="submit" class="btn btn--large float--right contact__submit">Submit</button>
+
+	<div id="contact-loader" class="spinner contact-loader">
+	  <div class="bounce1"></div>
+	  <div class="bounce2"></div>
+	  <div class="bounce3"></div>
+	</div>
+
+	<div id="contact-result" class="contact__result">
+		<p></p>
+
+		<a href="#" class="result__close btn btn--large">
+			Okay
+		</a>
+	</div>
+</form>

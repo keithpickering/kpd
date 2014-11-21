@@ -1,0 +1,42 @@
+---
+layout: page-no-slider
+page-class: page--projects
+---
+
+<div class="container container--full">
+	<div id="posts" class="posts post-grid">
+
+		{% for post in paginator.posts %}
+			
+
+			<article class="post post--projects post-grid__post">
+				<header class="post__overlay">
+					<h2 class="post__title"><a href="{{ site.url }}{{ post.url }}"><span>{{ post.title }}</span></a></h2>
+				</header>
+				<img class="post-grid__img" src="{{ site.url }}/images/projects/{{ post.img-dir }}/medium/{{ post.post-gallery | first | map: 'url' }}" alt="">
+			</article>
+
+			
+		{% endfor %}
+
+		{% if paginator.total_pages > 1 %}
+
+		<div class="load-more">
+
+			{% if paginator.next_page %}
+
+				<a id="load-more" href="{{ site.url }}/projects/page{{ paginator.next_page }}/" class="btn btn--large btn--projects">Load more</a>
+
+			{% else %}
+
+				<p>There's nothing else here.</p>
+
+			{% endif %}
+
+		</div>
+
+	{% endif %}
+
+	</div>
+
+</div>

@@ -1,0 +1,58 @@
+/*------------------------------------*\
+    MIXINS
+\*------------------------------------*/
+
+
+
+
+
+/**
+ * Import fonts
+ */
+@include declare-font-face("Novecento", "Novecentosanswide-Light-webfont", 300);
+@include declare-font-face("Novecento", "Novecentosanswide-Bold-webfont", 400);
+
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 { 
+	font-family: $header-font-family;
+	font-weight: 400;
+	text-transform: uppercase;
+}
+h5,
+h6 {
+	font-weight: 300;
+}
+
+
+/**
+ * Link styles
+ */
+a {
+	text-decoration: none;
+	color: $gray-dark;
+	.post__body &:not(.btn),
+	.content-wrapper &:not(.btn) {
+		border-bottom: 2px solid rgba($gray-medium, 0.15);
+		transition: all 0.1s;
+		&:hover,
+		&:focus {
+			border-bottom-color: rgba($gray-medium, 0.5);
+		}
+	}
+	.page-foot__section &:not(.btn),
+	.page-foot__copyright &:not(.btn) {
+		color: $gray-light;
+		border-bottom: 2px solid rgba($gray-light, 0.15);
+		&:hover {
+			color: white;
+			border-bottom-color: rgba($gray-light, 0.5);
+		}
+	}
+}

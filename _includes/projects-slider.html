@@ -1,0 +1,28 @@
+<section class="posts posts--projects">
+	<header class="section-head">
+		<div class="container container--full cf">
+			<h2 class="float--left">Projects</h2>
+			<a href="/projects" class="btn btn--secondary float--right">View all</a>
+		</div>
+	</header>
+
+	<div id="projects-slider" class="post-grid">
+
+		{% for post in site.categories.projects %}
+
+			<article class="post post--projects post-grid__post">
+				<header class="post__overlay">
+					<h3 class="post__title">
+						<a href="{{ post.url }}">
+							<span>{{ post.title }}</span>
+						</a>
+					</h3>
+				</header>
+				<img class="post-grid__img" src="/images/projects/{{ post.img-dir }}/medium/{{ post.post-gallery | first | map: 'url' }}" alt="">
+			</article>
+
+		{% endfor %}
+
+	</div>
+
+</section>

@@ -53,7 +53,11 @@ layout: page-post
 			<li>
 				<span>Tools:</span>
 
-				{{ page.tags | join: ', ' }}
+				{% if page.tools %}
+					{{ page.tools | join: ', ' }}
+				{% else %}
+					{{ page.tags | join: ', ' }}
+				{% endif %}
 			</li>
 
 		</ul>
@@ -136,42 +140,44 @@ layout: page-post
 </article>
 
 <script>
-	var countUp, setCount, url;
+	(function($) {
+		var countUp, setCount, url;
 
-	url = "{{ site.url }}{{ page.url }}";
+		url = "{{ site.url }}{{ page.url }}";
 
-	$.getJSON("http://urls.api.twitter.com/1/urls/count.json?url=" + url + "&callback=?", function(json) {
-	return setCount($("#twitter-count"), json.count);
-	});
+		$.getJSON("http://urls.api.twitter.com/1/urls/count.json?url=" + url + "&callback=?", function(json) {
+		return setCount($("#twitter-count"), json.count);
+		});
 
-	$.getJSON("http://graph.facebook.com/" + url, function(json) {
-	return setCount($("#facebook-count"), json.shares);
-	});
+		$.getJSON("http://graph.facebook.com/" + url + "&callback=?", function(json) {
+		return setCount($("#facebook-count"), json.shares);
+		});
 
-	$.getJSON("http://api.pinterest.com/v1/urls/count.json?url=" + url + "&callback=?", function(json) {
-	return setCount($("#pinterest-count"), json.count);
-	});
+		$.getJSON("http://api.pinterest.com/v1/urls/count.json?url=" + url + "&callback=?", function(json) {
+		return setCount($("#pinterest-count"), json.count);
+		});
 
-	countUp = function($item) {
-	  return setTimeout(function() {
-	    var current, newCount, target;
-	    current = $item.attr("data-current-count") * 1;
-	    target = $item.attr("data-target-count") * 1;
-	    newCount = current + Math.ceil((target - current) / 2);
-	    $item.attr("data-current-count", newCount);
-	    $item.html(newCount);
-	    if (newCount < target) {
-	      return countUp($item);
-	    }
-	  }, 100);
-	};
+		countUp = function($item) {
+		  return setTimeout(function() {
+		    var current, newCount, target;
+		    current = $item.attr("data-current-count") * 1;
+		    target = $item.attr("data-target-count") * 1;
+		    newCount = current + Math.ceil((target - current) / 2);
+		    $item.attr("data-current-count", newCount);
+		    $item.html(newCount);
+		    if (newCount < target) {
+		      return countUp($item);
+		    }
+		  }, 100);
+		};
 
-	setCount = function($item, count) {
-	  if (count == null) {
-	    count = null;
-	  }
-	  $item.attr("data-target-count", count);
-	  $item.attr("data-current-count", 0);
-	  return countUp($item);
-	};
+		setCount = function($item, count) {
+		  if (count == null) {
+		    count = null;
+		  }
+		  $item.attr("data-target-count", count);
+		  $item.attr("data-current-count", 0);
+		  return countUp($item);
+		};
+	})(jQuery);
 </script>

@@ -5,11 +5,12 @@ layout: none
   {% for post in site.posts %}
     {
       "title"    : "{{ post.title | escape }}",
-      "category" : "{{ post.category }}",
+      "category" : "{{ post.category | array_to_sentence_string }}",
       "tags"     : "{{ post.tags | array_to_sentence_string }}",
-      "url"      : "{{ site.baseurl }}{{ post.url }}",
-      "date"     : "{{ post.date }}",
-      "image"    : "/images/projects/{{ post.img-dir }}/small/{{ post.post-gallery | first | map: 'url' }}"
+      "url"      : "{{ site.url }}{{ post.url }}",
+      "date"     : "{{ post.date | date: "%B %Y" }}",
+      "image"    : "{{ site.url }}/images/projects/{{ post.img-dir }}/small/{{ post.post-gallery | first | map: 'url' }}",
+      "tools"    : "{% if post.tools %}{{ post.tools | array_to_sentence_string }}{% endif %}"
     } {% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]

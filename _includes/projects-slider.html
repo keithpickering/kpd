@@ -1,4 +1,4 @@
-<section class="posts posts--projects">
+<section id="projects" class="posts posts--projects">
 	<header class="section-head">
 		<div class="container container--full cf">
 			<h2 class="float--left">Projects</h2>
@@ -8,7 +8,7 @@
 
 	<div id="projects-slider" class="post-grid">
 
-		{% for post in site.categories.projects %}
+		{% for post in site.categories.projects limit:8 %}
 
 			<article class="post post--projects post-grid__post">
 				<header class="post__overlay">

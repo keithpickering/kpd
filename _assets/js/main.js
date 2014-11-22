@@ -3,7 +3,7 @@
 	//
 	// Debounced resize event
 	//
-	function on_resize(c,t){onresize=function(){clearTimeout(t);t=setTimeout(c,100)};return c};
+	function on_resize(c,t){onresize=function(){clearTimeout(t);t=setTimeout(c,200)};return c};
 
 	//
 	// Set up slick.js
@@ -80,7 +80,6 @@
 			}
 		}
 	});
-
 
 	//
 	// Parallax background images
@@ -291,56 +290,6 @@
    	});
 
 
-   	//
-   	// Contact form
-   	//
-   	$(function() {
-   		var form = $('#contact'),
-   			formLoader = $('#contact-loader'),
-   			formResult = $('#contact-result'),
-   			formResultText = $('#contact-result > p');
-
-   		$(form).submit(function(event) {
-   			event.preventDefault();
-
-   			$(formLoader).show();
-
-   			var formData = $(form).serialize();
-
-   			$.ajax({
-   				type: 'POST',
-   				url: $(form).attr('action'),
-   				data: formData
-   			})
-   			.done(function(response) {
-   				$(formResult).removeClass('contact__result--error');
-   				$(formResult).addClass('contact__result--visible contact__result--success');
-
-   				$(formResultText).text(response);
-
-   				$('#contact-name').val('');
-   				$('#contact-email').val('');
-   				$('#contact-message').val('');
-   			})
-   			.fail(function(data) {
-				$(formResult).removeClass('contact__result--success');
-   				$(formResult).addClass('contact__result--visible contact__result--error');
-
-   				if (data.responseText !== '') {
-   					$(formResultText).text(data.responseText);
-   				} else {
-   					$(formResultText).text('Sorry, an error occurred. :(')
-   				}
-   			});
-   		});
-   		$('.result__close').click(function(e) {
-			e.preventDefault();
-
-			$(formLoader).hide();
-
-			$(formResult).removeClass('contact__result--visible');
-		});
-   	});
 
 
 
@@ -368,6 +317,26 @@
 					 '<div class="bounce2"></div>' +
 					 '<div class="bounce3"></div>' +
 					 '</div>'
+	});
+
+
+	//
+	// Smooth scroll to anchor
+	// Thanks Chris Coyier!
+	//
+	$(function() {
+	  $('a[href*=#]:not([href=#])').click(function() {
+	    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+	      var target = $(this.hash);
+	      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+	      if (target.length) {
+	        $('html,body').animate({
+	          scrollTop: target.offset().top
+	        }, 1000);
+	        return false;
+	      }
+	    }
+	  });
 	});
 
 })(jQuery);

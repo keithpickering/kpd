@@ -2,12 +2,16 @@
 	.page-main & {
 		padding-bottom: $base-spacing-unit * 2;
 	}
-	.jscroll-added > .post {
-		opacity: 0;
+	.jscroll-added {
+		> .post {
+			opacity: 0;
+			transform: scale(0.5) translate(-100px, 0);
+		}
+		> .jscroll-visible {
+			opacity: 1;
+			transform: none;
+		}
 	}
-}
-.jscroll-visible {
-	opacity: 1 !important;
 }
 
 .post {
@@ -402,6 +406,7 @@
 		color: white;
 		text-align: center;
 		@include font-size($h2-size);
+		line-height: 1.25;
 		@include media-query(desk) {
 			font-size: 48px;
 		}

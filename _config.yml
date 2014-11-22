@@ -1,12 +1,14 @@
 name: "Keith Pickering Design"
 description: "My work portfolio"
 
-url: "http://keithpickering.net/"
+url: "http://keithpickering.net"
 
 paginate: 8
 paginate_path: /projects/page:num
 permalink: /:categories/:title
 markdown: rdiscount
+rdiscount:
+    extensions: ['smart']
 
 keep_files: ["css", "js"] 
 

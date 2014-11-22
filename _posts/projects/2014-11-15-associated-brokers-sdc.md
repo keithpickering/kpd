@@ -3,6 +3,7 @@ layout: post-project
 title: "Associated Brokers /SDC"
 
 category: [projects, web-development]
+tags: [wordpress]
 
 img-dir: associated-brokers-sdc
 post-gallery:
@@ -13,10 +14,7 @@ post-gallery:
 
 client: Associated Brokers /SDC
 client-url: http://edpickering.com
+tools: [html, css, sass, xenforo]
 
-tags: [html, css, sass, xenforo]
-
-intro: "Thanks to the massive success of the Marble Hornets Kickstarter, I was hired again to put together a box set design for the complete series."
+intro: "A small, simple site for a real estate company."
 ---
-
-Yeah!

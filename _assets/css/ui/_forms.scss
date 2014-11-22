@@ -6,14 +6,14 @@
 	transition: box-shadow 0.25s;
 	&:hover {
 		background-color: lighten($clouds, 5%);
-		box-shadow: 0 0 0 2px desaturate($peter-river, 50%);
+		box-shadow: 0 0 0 2px lighten($peter-river, 20%);
 	}
 	&:focus {
 		background-color: white;
 		box-shadow: 0 0 0 4px $peter-river;
 	}
 	@include placeholder {
-		color: $gray-light;
+		color: $gray-dark;
 	}
 }
 

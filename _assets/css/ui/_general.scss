@@ -364,10 +364,8 @@ hr {
 //	background-color: darken($module-color-dark, 10%);
 	background-repeat: no-repeat;
 	background-position: 0 0;
-//	background-attachment: fixed;
 	background-size: cover;
 	text-align: center;
-	transition: height 0.25s;
 	> .container {
 		display: table-cell;
 		vertical-align: middle;
@@ -408,7 +406,7 @@ hr {
 	margin-bottom: $base-spacing-unit * 2;
 	@include font-size($kilo-size);
 	@include media-query(lap-and-up) {
-		max-width: 1200px;
+		max-width: 1000px;
 		margin-left: auto;
 		margin-right: auto;
 		@include font-size($giga-size);
@@ -416,8 +414,12 @@ hr {
 	&:last-child {
 		margin-bottom: 0;
 	}
-	> .first-name {
+	.page--home & {
+		font-weight: 200;
+	}
+	> strong {
 		line-height: 1 !important;
+		font-weight: 400;
 		@include font-size($kilo-size + 6px);
 		@include media-query(lap-and-up) {
 			@include font-size($giga-size + 12px);
@@ -432,6 +434,15 @@ hr {
 			@include font-size($h3-size);
 			line-height: 3;
 		}
+	}
+}
+
+.parallax {
+	background-attachment: fixed;
+	@include media-query(portable) {
+		// Prevent parallax on small screens
+		background-attachment: scroll;
+		background-position: 50% 50% !important;
 	}
 }
 
@@ -459,16 +470,6 @@ cursor: -webkit-zoom-out;
 .fancybox-title {
 	font-family: "Lato", sans-serif;
 	text-align: center;
-}
-
-
-.parallax {
-	background-attachment: fixed;
-	@include media-query(portable) {
-		// Prevent parallax on small screens
-		background-attachment: scroll;
-		background-position: 0 0 !important;
-	}
 }
 
 
@@ -519,7 +520,7 @@ cursor: -webkit-zoom-out;
 
 .contact {
 	position: relative;
-	display: none;
+//	display: none;
 	overflow: hidden;
 	max-width: 640px;
 	margin-left: auto;

@@ -3,6 +3,7 @@ layout: post-project
 title: "Lightpaper Icon"
 
 category: [projects, graphic-design]
+tags: [icon]
 
 img-dir: lightpaper
 post-gallery:
@@ -10,7 +11,6 @@ post-gallery:
       title: App icon
 
 client: None
-
-tags: [illustrator]
+tools: [illustrator]
 ---
 

@@ -1,0 +1,25 @@
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.scene {
+    .scene__element {
+        animation-duration: 250ms;
+        transition-timing-function: ease-in;
+        animation-fill-mode: both;
+    }
+
+    .scene__element--fadeinright {
+        animation-name: fadeInRight;
+    }
+    .scene__element--fadeinleft {
+
+    }
+}

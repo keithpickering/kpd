@@ -3,6 +3,7 @@ layout: post-project
 title: "Internet Friendship Rainbow of Love"
 
 category: [projects, illustration]
+tags: [Keith]
 
 img-dir: friendship-rainbow
 post-gallery:
@@ -10,8 +11,7 @@ post-gallery:
       title: Full version
 
 client: None
-
-tags: [illustrator, photoshop]
+tools: [illustrator, photoshop]
 
 intro: "I have the best friends. Flamboyant too."
 ---

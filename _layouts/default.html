@@ -1,5 +1,15 @@
 <!DOCTYPE html>
+<!--[if lte IE 8]>
+<html class="ie-lte-8" lang="en">
+<![endif]-->
+
+<!--[if IE 9]>
+<html class="ie9" lang="en">
+<![endif]-->
+
+<!--[if !IE]><!-->
 <html lang="en">
+<!--<![endif]-->
 
 	{% include head.html %}
 
@@ -9,10 +19,9 @@
 
 	{{ content }}
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
-    <script src="/js/jquery.fancybox.js"></script>
-    <script src="/js/slick.min.js"></script>
-    <script src="/js/main.min.js"></script>
+    <script src="{{ site.url }}/js/jquery.fancybox.js"></script>
+    <script src="{{ site.url }}/js/slick.min.js"></script>
+    <script src="{{ site.url }}/js/main.min.js"></script>
 
 </body>
 </html>

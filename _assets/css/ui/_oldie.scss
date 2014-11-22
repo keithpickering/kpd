@@ -1,0 +1,38 @@
+//
+// Fallback styles for old versions of IE
+//
+
+
+
+// Hide the browser warning by default
+.old-browser-warning {
+    display: none;
+    padding: $half-spacing-unit 0;
+    line-height: 2;
+    color: white;
+    background-color: $alizarin;
+    .ie-lte-8 &,
+    .ie9 & {
+        display: block;
+    }
+    .btn {
+        @include button-style(darken($alizarin, 5%));
+    }
+}
+
+
+// All oldie styles
+.ie-lte-8,
+.ie9 {
+    
+}
+
+// IE8 and older styles
+.ie-lte-8 {
+
+}
+
+// IE9 styles
+.ie9 {
+
+}

@@ -3,6 +3,7 @@ layout: post-project
 title: "The Moths and the PC's"
 
 category: [projects, graphic-design]
+tags: [composite]
 
 img-dir: computer-moth
 post-gallery:
@@ -10,10 +11,9 @@ post-gallery:
       title: Completed moth image
 
 client: None
+tools: [photography, photoshop]
 
-tags: [photography, photoshop]
-
-intro: "In one of my Photoshop classes, I was tasked with creating a creature out of entirely unrelated materials."
+intro: "In one of my Photoshop classes, I was tasked with creating a composite creature out of entirely unrelated materials."
 ---
 
-Yeah!
+This actually won some sort of award at my college, so that was nice.

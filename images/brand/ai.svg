@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="248px" height="248px" viewBox="0 0 248 248" enable-background="new 0 0 248 248" xml:space="preserve">
-<rect x="0" y="0" fill="#FFBB4E" width="248" height="248"/>
+<rect fill="#FFBB4E" width="248" height="248"/>
 <rect x="19" y="19" fill="#47301C" width="210" height="210"/>
 <g>
-	<text transform="matrix(1 0 0 1 56.3218 168.0908)" fill="#FFBB4E" font-family="'MyriadPro-Bold'" font-size="140">Ai</text>
+	<g enable-background="new    ">
+		<path fill="#FFBB4E" d="M87.542,143.871l-6.72,24.22h-22.12l28.84-94.359h28l29.26,94.359h-22.96l-7.28-24.22H87.542z
+			 M111.481,127.911l-5.88-20.021c-1.68-5.6-3.36-12.6-4.76-18.199h-0.28c-1.4,5.6-2.8,12.739-4.34,18.199l-5.6,20.021H111.481z"/>
+		<path fill="#FFBB4E" d="M177.841,80.591c0,5.88-4.479,10.641-11.479,10.641c-6.721,0-11.2-4.761-11.061-10.641
+			c-0.14-6.159,4.34-10.779,11.2-10.779S177.701,74.432,177.841,80.591z M155.861,168.091v-68.46h21.279v68.46H155.861z"/>
+	</g>
 </g>
 </svg>

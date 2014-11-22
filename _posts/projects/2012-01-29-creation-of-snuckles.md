@@ -3,6 +3,7 @@ layout: post-project
 title: "Creation of Snuckles"
 
 category: [projects, illustration]
+tags: [Snuckles]
 
 img-dir: creation-of-snuckles
 post-gallery:
@@ -10,10 +11,11 @@ post-gallery:
       title: Don't even ask.
 
 client: None
+tools: [illustrator, photoshop]
 
-tags: [illustrator, photoshop]
-
-intro: "Snuckles is a character my friends and I came up with to make fun of bad Sonic fan characters."
+intro: "Snuckles is a giraffe-hedgehog-Pokémon who is also a transformer."
 ---
 
-Knowing the backstory doesn't really help it to make any more sense.
+Here he is alongside his faithful bad-fan-character counterpart, Ded Murio, breathing life into all of humanity with myself as a vessel.
+
+It doesn't have to make sense.

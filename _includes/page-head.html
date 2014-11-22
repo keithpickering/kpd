@@ -1,3 +1,9 @@
+<div class="old-browser-warning">
+	<div class="container">
+		Your browser is out of date&mdash;some elements won&rsquo;t display correctly. <a class="btn btn--small float--right" href="http://whatbrowser.org/">More info</a>
+	</div>
+</div>
+
 <header id="page-head" class="page-head">
 	<div class="page-head__top">
 		<div class="container">
@@ -10,7 +16,7 @@
 				<div class="grid__item lap--one-half desk--one-half">
 					<ul class="nav social-links">
 						<li class="flyout brand--email">
-							<a class="popup" href="#contact">
+							<a class="popup" data-fancybox-type="ajax" href="/contact.php">
 								<svg class="icon icon--envelope">
 									<use xlink:href="#icon-envelope"></use>
 								</svg>
@@ -52,14 +58,14 @@
 					</ul>
 				</div>
 			</div>
-		</div><!-- /container -->
-	</div><!-- /page-head__top -->
+		</div>
+	</div>
 	<nav class="main-nav">
 		<div class="container container--full">
 			<a href="{{ site.url }}" class="main-nav__home">Home</a>
 			<a href="{{ site.url }}/projects" class="main-nav__projects">Projects</a>
 			<a href="http://keithhasanartblog.tumblr.com/" class="main-nav__blog">Blog</a>
 			<a href="{{ site.url }}/about" class="main-nav__about">About Me</a>
-		</div><!-- /container -->
-	</nav><!-- /main-nav -->
-</header><!-- /page-head -->
+		</div>
+	</nav>
+</header>

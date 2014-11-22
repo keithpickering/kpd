@@ -1,4 +1,4 @@
-<section id="hero" class="hero {% if page.hero-fullheight == true %}hero--fullheight{% endif %} {% if page.hero-parallax == true %}parallax{% endif %}" {% if page.hero-parallax == true %}data-velocity="-0.25"{% endif %} {% if page.hero-image %}style="background-image:url({{ page.hero-image }}"{% endif %}>
+<section id="hero" class="hero {% if page.hero-fullheight == true %}hero--fullheight{% endif %} {% if page.hero-parallax == true %}parallax{% endif %}" {% if page.hero-parallax == true %}data-velocity="-0.25"{% endif %} {% if page.hero-image %}style="background-image:url({{ page.hero-image }})"{% endif %}>
 	<div class="container">
 		<h1 class="hero__head">
 			{% if page.hero-title %}
@@ -11,10 +11,10 @@
 		{% if page.title == "Home" %}
 			<ul class="hero__btns nav nav--spacing">
 				<li>
-					<a href="#contact" class="popup btn btn--large btn--secondary">Say hello</a>
+					<a href="#projects" class="btn btn--large btn--secondary">Say what?</a>
 				</li>
 				<li>
-					<a href="#" class="btn btn--large">Hire me!</a>
+					<a href="{{ site.url }}/about#hire-me" class="btn btn--large">Hire me!</a>
 				</li>
 			</ul>
 		{% endif %}

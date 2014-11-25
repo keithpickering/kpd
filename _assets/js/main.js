@@ -10,20 +10,15 @@
 	//
 	$("#projects-slider").slick({
 		arrows: false,
-		speed: 1000,
+		speed: 500,
 		autoplay: true,
 		slide: "article",
 		autoplaySpeed: 2000,
 		infinite: true,
 		slidesToShow: 6,
 		slidesToScroll: 1,
+		lazyLoad: "progressive",
 		responsive: [
-			{
-				breakpoint: 1600,
-				settings: {
-					slidesToShow: 5
-				}
-			},
 			{
 				breakpoint: 1400,
 				settings: {
@@ -31,21 +26,9 @@
 				}
 			},
 			{
-				breakpoint: 1000,
-				settings: {
-					slidesToShow: 3
-				}
-			},
-			{
 				breakpoint: 800,
 				settings: {
 					slidesToShow: 2
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 1
 				}
 			}
 		]
@@ -139,7 +122,7 @@
 	};
 
 	$(document).ready(heroResize);
-	on_resize(heroResize);
+	$(window).resize(heroResize);
 
 
 	//
@@ -197,127 +180,132 @@
 	//
 	// Get latest tweets for footer
 	//
-	var twitterConfig = {
-	  "id": '533700189861593088',
-	  "domId": '',
-	  "maxTweets": 2,
-	  "enableLinks": true,
-	  "showRetweet": false,
-	  "showTime": true,
-	  "showUser": false,
-	  "showImages": false,
-	  "dateFunction": '',
-	  "showInteraction": false,
-	  "customCallback": tweetHandler
-	};
+	$(function() {
+		var twitterConfig = {
+		  "id": '533700189861593088',
+		  "domId": '',
+		  "maxTweets": 2,
+		  "enableLinks": true,
+		  "showRetweet": false,
+		  "showTime": true,
+		  "showUser": false,
+		  "showImages": false,
+		  "dateFunction": '',
+		  "showInteraction": false,
+		  "customCallback": tweetHandler
+		};
 
-	function tweetHandler(tweets) {
-	    var x = tweets.length;
-	    var n = 0;
-	    var element = document.getElementById('tweets');
-	    var html = '<div class="grid">';
+		function tweetHandler(tweets) {
+		    var x = tweets.length;
+		    var n = 0;
+		    var element = document.getElementById('tweets');
+		    var html = '<div class="grid">';
 
-	    while(n < x) {
-	      html += '<div class="grid__item desk--one-half">'
-	      	    + '<blockquote class="quote quote--tweet">'
-	      	    + tweets[n]
-	      	    + '</blockquote>'
-	      	    + '</div>';
-	      n++;
-	    }
-	    html += '</div>';
+		    while(n < x) {
+		      html += '<div class="grid__item desk--one-half">'
+		      	    + '<blockquote class="quote quote--tweet">'
+		      	    + tweets[n]
+		      	    + '</blockquote>'
+		      	    + '</div>';
+		      n++;
+		    }
+		    html += '</div>';
 
-	    element.innerHTML = html;
-	}
+		    element.innerHTML = html;
+		}
 
-	twitterFetcher.fetch(twitterConfig);
-
+		twitterFetcher.fetch(twitterConfig);
+	});
+	
 
 
 	//
     // Static site search
     //
-    SimpleJekyllSearch.init({
-      searchInput: document.getElementById('search-input'),
-      resultsContainer: document.getElementById('search-results-list'),
-      dataSource: '/search.json',
-      noResultsText: '<li class="no-results">Looks like nothing&rsquo;s here.</li>',
-      searchResultTemplate: 
-      	'<li class="results__item flag flag--middle">' +
-		'<div class="flag__img">' +
-		'<img src="{image}" alt="" class="results__img">' +
-		'</div>' +
-		'<div class="flag__body">' +
-		'<a class="results__title" href="{url}">{title}</a>' +
-		'</div>' +
-		'</li>'
-    });
+	$(function() {
+		SimpleJekyllSearch.init({
+	      searchInput: document.getElementById('search-input'),
+	      resultsContainer: document.getElementById('search-results-list'),
+	      dataSource: '/search.json',
+	      noResultsText: '<li class="no-results">Looks like nothing&rsquo;s here.</li>',
+	      searchResultTemplate: 
+	      	'<li class="results__item flag flag--middle">' +
+			'<div class="flag__img">' +
+			'<img src="{image}" alt="" class="results__img">' +
+			'</div>' +
+			'<div class="flag__body">' +
+			'<a class="results__title" href="{url}">{title}</a>' +
+			'</div>' +
+			'</li>'
+	    });
 
-    // Show results when user is typing in search input
-    var searchInput = $("#search-input"),
-    	searchResults = $("#search-results");
+	    // Show results when user is typing in search input
+	    var searchInput = $("#search-input"),
+	    	searchResults = $("#search-results");
 
-	function showSearchResults() {
-		$(".btn--search").addClass("faded");
-		$(searchResults).addClass("results--visible");
-	}
+	    	searchInput.val('');
 
+		function showSearchResults() {
+			$(".btn--search").addClass("faded");
+			$(searchResults).addClass("results--visible");
+		}
 
+		searchInput.focus(function() {
+			if (searchInput.val()) {
+				showSearchResults();
+			} else {
+				$(searchInput).keypress(showSearchResults);
+			}	
+		});
 
-	searchInput.focus(function() {
-		if (searchInput.val()) {
-			showSearchResults();
-		} else {
-			$(searchInput).keypress(showSearchResults);
-		}	
+		// If input is unclicked and results box is not being clicked, hide the results box
+	    $(searchInput).focusout(function() {
+	    	if (!$(searchResults).is(":hover")) {
+				$(searchResults).removeClass("results--visible");
+		    	$(".btn--search").removeClass("faded");
+	    	}
+	    });
+
+	    $(searchResults).click(function() {
+	    	$(searchInput).focus();
+	    });
+
+		// Hide results area to start
+	   	$(document).ready(function() {
+	   		$(searchResults).removeClass("results--visible");
+	   	});
 	});
-
-	// If input is unclicked and results box is not being clicked, hide the results box
-    $(searchInput).focusout(function() {
-    	if (!$(searchResults).is(":hover")) {
-			$(searchResults).removeClass("results--visible");
-	    	$(".btn--search").removeClass("faded");
-    	}
-    });
-
-    $(searchResults).click(function() {
-    	$(searchInput).focus();
-    });
-
-	// Hide results area to start
-   	$(document).ready(function() {
-   		$(searchResults).removeClass("results--visible");
-   	});
-
-
-
+   
 
 
 	//
 	// Infinite scroll
 	//
-	function jScrollCallback() {
-		setTimeout(function() {
-			$('.jscroll-added > .post').each(function() {
-				$(this).addClass('jscroll-visible');
-			});
-		}, 200);
-		
-		postGridResize();
-		clickPostGrid();
-	}
+	$(function() {
+		function jScrollCallback() {
+			setTimeout(function() {
+				$('.jscroll-added > .post').each(function() {
+					$(this).addClass('jscroll-visible');
+				});
+			}, 200);
+			
+			postGridResize();
+			clickPostGrid();
+		}
 
-	$('#posts').jscroll({
-		nextSelector: '#load-more',
-		contentSelector: 'article',
-		autoTrigger: false,
-		callback: jScrollCallback,
-		loadingHtml: '<div id="posts-loader" class="spinner posts-loader">' +
-					 '<div class="bounce1"></div>' +
-					 '<div class="bounce2"></div>' +
-					 '<div class="bounce3"></div>' +
-					 '</div>'
+		$('#posts').jscroll({
+			nextSelector: '#load-more',
+			contentSelector: 'article',
+			autoTrigger: false,
+			callback: jScrollCallback,
+			loadingHtml: '<div id="posts-loader" class="spinner posts-loader">' +
+						 '<div class="bounce1"></div>' +
+						 '<div class="bounce2"></div>' +
+						 '<div class="bounce3"></div>' +
+						 '</div>'
+		});
 	});
+
 
 
 	//
@@ -338,6 +326,7 @@
 	    }
 	  });
 	});
+
 
 })(jQuery);
 

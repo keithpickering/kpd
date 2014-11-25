@@ -50,13 +50,18 @@
  * Logo
  */
 .site-logo {
-	display: inline-block;
-	vertical-align: top;
-	height: 48px;
-	width: auto;
-	max-width: none;
+	display: block;
+	width: 100%;
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
 	margin-bottom: $base-spacing-unit;
 	@include media-query(lap-and-up) {
+		display: inline-block;
+		vertical-align: top;
+		height: 48px;
+		width: auto;
+		max-width: none;
 		margin-bottom: 0;
 	}
 }
@@ -70,6 +75,11 @@
 	font-size: 0;
 	margin-bottom: 0;
 	white-space: nowrap;
+	transition: all 0.25s;
+	@media screen and (max-width: 400px) {
+		margin-left: -$half-spacing-unit;
+		margin-right: -$half-spacing-unit;
+	}
 	> li {
 		margin-right: $half-spacing-unit;
 		width: 48px;
@@ -109,6 +119,9 @@
 	}
 	.brand--linkedin:hover .icon {
 		fill: $linkedin-color;
+	}
+	.brand--codepen:hover .icon {
+		fill: $codepen-color;
 	}
 	@include media-query(lap-and-up) {
 		text-align: right;

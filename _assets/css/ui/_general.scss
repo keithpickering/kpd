@@ -7,11 +7,12 @@
 
 html {
 	height: 100%;
-	overflow-x: hidden;
 //	margin: 0 !important;
 }
 
 body {
+	min-width: 320px;
+	overflow-x: hidden;
 	color: $gray-darker;
 	background-color: lighten($clouds, 5%);
 }
@@ -125,6 +126,7 @@ hr {
 .brand--linkedin    { background-color: $linkedin-color; }
 .brand--google-plus { background-color: #dd4b39; }
 .brand--pinterest   { background-color: $pinterest-color; }
+.brand--codepen     { background-color: $codepen-color; }
 
 .brand-fill--twitter { fill: $twitter-color; }
 
@@ -361,9 +363,8 @@ hr {
 	display: table;
 	width: 100%;
 	color: white;
-//	background-color: darken($module-color-dark, 10%);
 	background-repeat: no-repeat;
-	background-position: 0 0;
+	background-position: 50% 50%;
 	background-size: cover;
 	text-align: center;
 	> .container {
@@ -397,6 +398,9 @@ hr {
 	}
 }
 .hero--fullheight {
+	@include media-query(lap-and-up) {
+		background-attachment: fixed;
+	}
 	& > .container {
 		@extend %shadow-inset-4;
 	}	
@@ -448,7 +452,10 @@ hr {
 
 
 [id=fancybox-lock] {
-cursor: -webkit-zoom-out;
+	cursor: -webkit-zoom-out;
+}
+[id=fancybox-loading] {
+	
 }
 .fancybox-type-image {
 	&, & * {

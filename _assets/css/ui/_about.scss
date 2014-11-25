@@ -4,7 +4,9 @@
 		color: white;
 		h2 {
 			text-align: center;
-			font-size: 48px;
+			@include media-query(lap-and-up) {
+				font-size: 48px;
+			}
 		}
 		a:not(.btn) {
 			color: rgba(white, 0.75);

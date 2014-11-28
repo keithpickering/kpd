@@ -1,6 +1,10 @@
 <head>
 
-<title>{{ page.title }} &#124; Keith Pickering</title>
+{% if page.seo-title %}
+    <title>{{ page.seo-title }} &#124; Keith Pickering</title>
+{% else %}
+    <title>{{ page.title }} &#124; Keith Pickering</title>
+{% endif %}
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.5">

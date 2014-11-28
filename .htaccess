@@ -24,3 +24,17 @@ ExpiresByType text/css "access plus 1 month"
 ExpiresByType application/javascript "access plus 1 month"
 
 </IfModule>
+
+# Direct www to non-www
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^keithpickering\.net
+RewriteRule (.*) http://keithpickering.net/$1 [R=301,L]
+
+# Rewrite index.html
+RewriteEngine On
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteRule ^(.*)/index\.html$ /$1/ [R=301,L]
+
+# Redirects
+Redirect 301 /marble-hornets-season-3-dvd /projects/package-design/marble-hornets-season-3
+Redirect 301 /marble-hornets-season-2-dvd /projects/package-design/marble-hornets-season-2

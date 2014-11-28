@@ -14,7 +14,7 @@ post-gallery:
 
 client: Associated Brokers /SDC
 client-url: http://edpickering.com
-tools: [html, css, sass, xenforo]
+tools: [html, css, sass, wordpress]
 
 intro: "A small, simple site for a real estate company."
 ---

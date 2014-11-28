@@ -13,7 +13,7 @@
 		speed: 500,
 		autoplay: true,
 		slide: "article",
-		autoplaySpeed: 2000,
+		autoplaySpeed: 3000,
 		infinite: true,
 		slidesToShow: 6,
 		slidesToScroll: 1,

@@ -1,0 +1,8 @@
+User-Agent: *
+Disallow: /examples
+Disallow: /favicons
+Disallow: /fonts
+Disallow: /js
+Disallow: /old-site
+Disallow: /resources
+Disallow: /contract

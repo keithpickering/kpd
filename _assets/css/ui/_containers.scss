@@ -14,3 +14,8 @@
 	padding-left: 0;
 	padding-right: 0;
 }
+.container--small {
+    @include media-query(desk) {
+        max-width: 800px;
+    }
+}

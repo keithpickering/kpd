@@ -3,7 +3,7 @@
 	padding: $half-spacing-unit;
 	border: 0;
 	background-color: $clouds;
-	transition: box-shadow 0.25s;
+	transition: box-shadow 0.15s;
 	&:hover {
 		background-color: lighten($clouds, 5%);
 		box-shadow: 0 0 0 2px lighten($peter-river, 20%);
@@ -15,6 +15,9 @@
 	@include placeholder {
 		color: $gray-dark;
 	}
+}
+.text-input--large {
+    font-size: $h3-size;
 }
 
 .submit-wrap {

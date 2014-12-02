@@ -1,0 +1,62 @@
+//
+// TERMS & CONDITIONS PAGE
+//
+
+
+
+.terms {
+    @extend %cf;
+    position: relative;
+    margin-top: $base-spacing-unit;
+    padding-top: $base-spacing-unit * 2;
+    border-top: 2px solid $gray-lightest;
+ //   max-width: 800px;
+    > .text-input {
+        margin-bottom: $base-spacing-unit;
+    }
+    .form__result {
+        padding: $base-spacing-unit * 2;
+        @include media-query(portable) {
+            padding: $half-spacing-unit;
+            > p {
+                font-size: $h4-size;
+            }
+        }
+    }
+    .result__close {
+        @include media-query(portable) {
+            font-size: $h4-size;
+        }
+    }
+}
+
+.terms__clear {
+    position: absolute;
+    top: $half-spacing-unit;
+    right: $half-spacing-unit;
+}
+
+.signature-container {
+    position: relative;
+    margin-bottom: $base-spacing-unit;
+    border: 2px solid $clouds;
+    background-color: $clouds;
+    transition: all 0.15s;
+    &:hover,
+    &:focus {
+        background-color: white;
+    }
+}
+.spinner.terms__loader {
+    display: none;
+    margin-left: $base-spacing-unit;
+    margin-right: 0;
+    margin-bottom: 0;
+    float: left;
+    > div {
+        background-color: $gray-lighter;
+    }
+}
+.terms__submit {
+    float: right;
+}

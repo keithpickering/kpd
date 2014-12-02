@@ -21,7 +21,7 @@
           <div class="bounce3"></div>
         </div>
 
-        <div id="contact-result" class="contact__result">
+        <div id="contact-result" class="form__result">
             <p></p>
 
             <a href="#" class="result__close btn btn--large btn--secondary">
@@ -50,16 +50,16 @@
                 data: formData
             })
             .done(function(response) {
-                $(formResult).removeClass('contact__result--error');
-                $(formResult).addClass('contact__result--visible contact__result--success');
+                $(formResult).removeClass('form__result--error');
+                $(formResult).addClass('form__result--visible form__result--success');
                 $(formResultText).text(response);
                 $('#contact-name').val('');
                 $('#contact-email').val('');
                 $('#contact-message').val('');
             })
             .fail(function(data) {
-                $(formResult).removeClass('contact__result--success');
-                $(formResult).addClass('contact__result--visible contact__result--error');
+                $(formResult).removeClass('form__result--success');
+                $(formResult).addClass('form__result--visible form__result--error');
                 if (data.responseText !== '') {
                     $(formResultText).text(data.responseText);
                 } else {
@@ -71,7 +71,7 @@
         $('.result__close').click(function(e) {
             e.preventDefault();
             $(formLoader).hide();
-            $(formResult).removeClass('contact__result--visible');
+            $(formResult).removeClass('form__result--visible');
         });
     });
     </script>

@@ -69,7 +69,7 @@ a.fancybox-nav span,
 .fancybox-skin {
     border-style: solid;
     border-color: #fff;
-    background: #fff;
+    background: lighten($clouds, 5%);
     color: #444;
 }
 

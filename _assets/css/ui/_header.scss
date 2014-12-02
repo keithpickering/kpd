@@ -75,7 +75,6 @@
 	font-size: 0;
 	margin-bottom: 0;
 	white-space: nowrap;
-	transition: all 0.25s;
 	@media screen and (max-width: 400px) {
 		margin-left: -$half-spacing-unit;
 		margin-right: -$half-spacing-unit;
@@ -84,12 +83,9 @@
 		margin-right: $half-spacing-unit;
 		width: 48px;
 		height: 48px;
-		transition: all 0.25s;
+		transition: all 0.15s;
 		&:last-child {
 			margin-right: 0;
-		}
-		&:hover {
-			background-color: white;
 		}
 		> a {
 			display: block;
@@ -105,6 +101,7 @@
 	.icon {
 		vertical-align: middle;
 	}
+	/*
 	.brand--email:hover .icon {
 		fill: $main-accent-color;
 	}
@@ -122,6 +119,13 @@
 	}
 	.brand--codepen:hover .icon {
 		fill: $codepen-color;
+	}
+	.brand--google-plus:hover .icon {
+		fill: $googleplus-color;
+	}
+	*/
+	> li:not(:hover) {
+		background-color: transparent;
 	}
 	@include media-query(lap-and-up) {
 		text-align: right;

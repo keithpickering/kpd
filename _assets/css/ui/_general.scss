@@ -250,17 +250,23 @@ hr {
 
 .page-main {
 	position: relative;
+    .page--blog &,
+    .page--projects &,
+    .page--contract & {
+        @extend %shadow-inset-4;
+    }
 	.page--blog & {
-		@extend %shadow-inset-4;
 		background-color: darken($blog-color, 10%);
 	}
 	.page--projects & {
-		@extend %shadow-inset-4;
 		background-color: darken($projects-color, 10%);
 	}
 	.page--about & {
 		background-color: darken($about-color, 10%);
 	}
+    .page--contract & {
+        background-color: darken($home-color, 10%);
+    }
 }
 
 .page-title {
@@ -362,11 +368,19 @@ hr {
 	position: relative;
 	display: table;
 	width: 100%;
-	color: white;
+	color: $gray-darker;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-size: cover;
 	text-align: center;
+	.page--home &,
+	.page--projects &,
+    .page--contract & {
+		color: white;
+	}
+    .page--contract & {
+    //    background-color: darken($home-color, 10%);
+    }
 	> .container {
 		display: table-cell;
 		vertical-align: middle;
@@ -565,7 +579,7 @@ hr {
 		background-color: $gray-lighter;
 	}
 }
-.contact__result {
+.form__result {
 	z-index: -1;
 	position: absolute;
 	top: 0;
@@ -574,29 +588,27 @@ hr {
 	bottom: 0;
 	padding: $base-spacing-unit * 4;
 	color: white;
-	background-color: rgba(white, 0.9);
+	background-color: rgba(lighten($clouds, 5%), 0.9);
 	text-align: center;
 	opacity: 0;
 	@include font-size($h1-size);
 	> p {
-		display: inline-block;
-		vertical-align: middle;
 		padding: $base-spacing-unit * 2;
 	}
 }
-.contact__result--success {
+.form__result--success {
 	> p {
 		background-color: rgba($nephritis, 0.9);
 		box-shadow: inset 0 0 0 24px lighten($nephritis, 10%);
 	}
 }
-.contact__result--error {
+.form__result--error {
 	> p {
 		background-color: rgba($alizarin, 0.9);
 		box-shadow: inset 0 0 0 24px lighten($alizarin, 10%);
 	}
 }
-.contact__result--visible {
+.form__result--visible {
 	z-index: 99;
 	opacity: 1;
 }
